@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SignalHive Pricing</title>
+  <link href="/styles.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-900 text-white font-sans p-4">
+  <h1 class="text-3xl text-yellow-400 mb-4">Pricing Plans</h1>
+
+  <div class="space-y-4">
+    <div class="bg-gray-800 p-4 rounded">
+      <h2 class="text-xl text-yellow-300">🐝 Drone</h2>
+      <p>Free, delayed signals</p>
+      <% if (!user) { %>
+        <a href="/register" class="text-blue-400 underline">Sign Up</a>
+      <% } %>
+    </div>
+
+    <div class="bg-gray-800 p-4 rounded">
+      <h2 class="text-xl text-yellow-300">🔧 Worker Bee - $19.99/mo</h2>
+      <p>Real-time signals, HiveMind Academy</p>
+      <% if (user && user.role !== 'Worker') { %>
+        <form action="/upgrade" method="POST">
+          <input type="hidden" name="newRole" value="Worker" />
+          <button class="bg-yellow-500 text-black px-4 py-1 rounded">Upgrade</button>
+        </form>
+      <% } %>
+    </div>
+
+    <div class="bg-gray-800 p-4 rounded">
+      <h2 class="text-xl text-yellow-300">👑 Queen Bee - $49.99/mo</h2>
+      <p>All features + auto-trading + recaps</p>
+      <% if (user && user.role !== 'Queen') { %>
+        <form action="/upgrade" method="POST">
+          <input type="hidden" name="newRole" value="Queen" />
+          <button class="bg-purple-500 text-white px-4 py-1 rounded">Upgrade</button>
+        </form>
+      <% } %>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <a href="/" class="text-blue-400 underline">Back to Home</a>
+  </div>
+</body>
+</html>

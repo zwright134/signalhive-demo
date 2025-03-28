@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Upgrade - SignalHive</title>
+  <link href="/styles.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-900 text-white font-sans p-4">
+  <h1 class="text-3xl text-yellow-400 mb-4">Upgrade Membership</h1>
+  <p>Welcome, <%= user.email %>. You are currently <%= user.role %> role.</p>
+  <p>Choose your new role:</p>
+  <form action="/upgrade" method="POST" class="space-y-2">
+    <div>
+      <label>
+        <input type="radio" name="newRole" value="Worker" />
+        Worker Bee ($19.99/mo)
+      </label>
+    </div>
+    <div>
+      <label>
+        <input type="radio" name="newRole" value="Queen" />
+        Queen Bee ($49.99/mo)
+      </label>
+    </div>
+    <button class="bg-yellow-500 text-black px-4 py-1 rounded">Confirm Upgrade</button>
+  </form>
+  <p class="mt-4">
+    <a href="/dashboard" class="text-blue-400 underline">Back to Dashboard</a>
+  </p>
+</body>
+</html>

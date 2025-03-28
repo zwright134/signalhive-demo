@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register - SignalHive</title>
+  <link href="/styles.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-900 text-white font-sans p-4">
+  <h1 class="text-3xl text-yellow-400 mb-4">Register</h1>
+  <% if (typeof error !== 'undefined') { %>
+    <div class="bg-red-700 p-2 mb-4"><%= error %></div>
+  <% } %>
+  <form action="/register" method="POST" class="space-y-2">
+    <div>
+      <label>Email:</label>
+      <input type="email" name="email" class="text-black" required />
+    </div>
+    <div>
+      <label>Password:</label>
+      <input type="password" name="password" class="text-black" required />
+    </div>
+    <!-- If there's a referral code, pass it along -->
+    <% if (ref) { %>
+      <input type="hidden" name="ref" value="<%= ref %>" />
+    <% } %>
+    <button class="bg-yellow-500 text-black px-4 py-1 rounded">Register</button>
+  </form>
+</body>
+</html>

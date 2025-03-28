@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SignalHive Dashboard</title>
+  <link href="/styles.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-900 text-white font-sans p-4">
+  <h1 class="text-3xl text-yellow-400 mb-4">Dashboard</h1>
+  <p>Welcome, <%= user.email %> (Role: <%= user.role %>)</p>
+
+  <% if (!trialActive) { %>
+    <div class="bg-red-500 text-white p-2 mb-4">
+      Your 7-day trial expired. Please upgrade if you're still a Drone.
+    </div>
+  <% } else { %>
+    <div class="bg-green-500 text-black p-2 mb-4">
+      Trial active until <%= new Date(user.trialExpires).toLocaleString() %>
+    </div>
+  <% } %>
+
+  <h2 class="text-xl text-yellow-300 mb-2">Signals</h2>
+  <% if (signals.length === 0) { %>
+    <p>No signals available for your role or your trial expired.</p>
+  <% } else { %>
+    <div class="space-y-2">
+      <% signals.forEach(sig => { %>
+        <div class="bg-gray-800 p-3 rounded">
+          <p><strong><%= sig.pair %></strong> - <%= sig.action %></p>
+          <p>Entry: <%= sig.entry %> | SL: <%= sig.sl %> | TP: <%= sig.tp %></p>
+          <p>Confidence: <%= sig.confidence %></p>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+
+  <form action="/logout" method="POST" class="mt-4">
+    <button class="bg-yellow-500 text-black px-4 py-1 rounded">Logout</button>
+  </form>
+  <a href="/referral-link" class="ml-4 text-blue-300 underline">Get Referral Link</a>
+</body>
+</html>

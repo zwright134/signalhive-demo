@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SignalHive Home</title>
+    <link href="/styles.css" rel="stylesheet" />
+  </head>
+<body class="bg-gray-900 text-white font-sans p-4">
+  <h1 class="text-3xl text-yellow-400 mb-4">Welcome to SignalHive</h1>
+  <% if (user) { %>
+    <p>Hello, <%= user.email %>. You are logged in as <%= user.role %>.</p>
+    <p><a href="/dashboard" class="text-blue-400 underline">Go to Dashboard</a></p>
+  <% } else { %>
+    <p>AI-powered signals for Forex, Crypto, and more.</p>
+    <a href="/register" class="text-blue-400 underline">Sign up</a> or
+    <a href="/login" class="text-blue-400 underline">Login</a>
+  <% } %>
+</body>
+</html>
