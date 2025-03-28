@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/zwright134/signalhive-demo#readme",
   "dependencies": {
-    "bcrypt": "^5.1.1",
+    "bcryptjs": "^3.0.2",
     "body-parser": "^1.20.0",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
